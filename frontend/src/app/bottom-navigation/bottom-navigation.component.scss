@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: white;
+  opacity: 95%;
+
+  .btn-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+    .p-button.p-button-text, .p-button.p-button-warning {
+      color: #FC466BFF;
+    }
+
+    .p-button.p-button-warning:enabled:focus, .p-button.p-button-info:enabled:focus {
+      box-shadow: 0 0 0 0.2rem #FC466BFF;
+      background-color: #FC466BFF;
+      color: white;
+    }
+  }
+}
