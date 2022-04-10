@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="header">
+    Register
+  </div>
+  <div class="welcome-back">
+    Lets get<br>
+    you on board.<br>
+    Create your new<br>
+    account now.
+  </div>
+  <form class="form">
+    <span class="p-float-label">
+      <input type="text" id="email" pInputText/>
+      <label for="email">Email</label>
+    </span>
+    <span class="p-float-label">
+      <input type="text" id="first-name" pInputText/>
+      <label for="first-name">First name</label>
+    </span>
+    <span class="p-float-label">
+      <input type="password" id="password" pInputText/>
+      <label for="password">Password</label>
+    </span>
+    <span class="p-float-label">
+      <input type="password" id="reapeat-password" pInputText/>
+      <label for="repeat-password">Repeat password</label>
+    </span>
+    <button pButton type="button" label="Register" class="p-button-lg"></button>
+  </form>
+  <div class="footer">
+    Already have an account?&nbsp;<a [routerLink]="['/login']">Sign in </a>
+  </div>
+</div>

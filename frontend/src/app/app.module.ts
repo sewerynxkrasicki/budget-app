@@ -13,6 +13,10 @@ import {BadgeModule} from "primeng/badge";
 import { BalanceComponent } from './balance/balance.component';
 import { BottomTransactionCardComponent } from './bottom-transaction-card/bottom-transaction-card.component';
 import { TransactionComponent } from './bottom-transaction-card/transaction/transaction.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import {InputTextModule} from "primeng/inputtext";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { TransactionComponent } from './bottom-transaction-card/transaction/tran
     HeaderComponent,
     BalanceComponent,
     BottomTransactionCardComponent,
-    TransactionComponent
+    TransactionComponent,
+    LoginComponent,
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,8 @@ import { TransactionComponent } from './bottom-transaction-card/transaction/tran
     ButtonModule,
     RippleModule,
     AvatarModule,
-    BadgeModule
+    BadgeModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
