@@ -10,12 +10,18 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './header/header.component';
 import {AvatarModule} from "primeng/avatar";
 import {BadgeModule} from "primeng/badge";
+import { BalanceComponent } from './balance/balance.component';
+import { BottomTransactionCardComponent } from './bottom-transaction-card/bottom-transaction-card.component';
+import { TransactionComponent } from './bottom-transaction-card/transaction/transaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BottomNavigationComponent,
-    HeaderComponent
+    HeaderComponent,
+    BalanceComponent,
+    BottomTransactionCardComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,

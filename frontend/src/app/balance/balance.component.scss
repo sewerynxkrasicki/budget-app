@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.container {
+  flex: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 70px;
+
+  .balance-wrapper {
+    font-weight: 300;
+    padding-bottom: 5px;
+  }
+
+  .amount-wrapper {
+    font-size: 35px;
+  }
+}

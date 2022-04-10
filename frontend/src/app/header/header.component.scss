@@ -1,9 +1,11 @@
 .container {
   display: flex;
   width: 100%;
+  flex: 1;
   padding: 25px;
   align-items: center;
   justify-content: space-between;
+
   .image-wrapper {
     display: flex;
     align-items: center;
