@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  width: 100%;
+  padding: 25px;
+  align-items: center;
+  justify-content: space-between;
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+
+    .text-wrapper {
+      padding-left: 10px;
+      color: white;
+    }
+  }
+
+  .p-button.p-button-text, .p-button.p-button-info {
+    color: white;
+    transform: rotate(15deg);
+  }
+
+  .p-button.p-button-info:enabled:focus {
+    box-shadow: none;
+  }
+}

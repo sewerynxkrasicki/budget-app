@@ -7,18 +7,24 @@ import { BottomNavigationComponent } from './bottom-navigation/bottom-navigation
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HeaderComponent } from './header/header.component';
+import {AvatarModule} from "primeng/avatar";
+import {BadgeModule} from "primeng/badge";
 
 @NgModule({
   declarations: [
     AppComponent,
-    BottomNavigationComponent
+    BottomNavigationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ButtonModule,
-    RippleModule
+    RippleModule,
+    AvatarModule,
+    BadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
