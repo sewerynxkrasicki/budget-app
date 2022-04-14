@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="header">
+    Transaction History
+  </div>
+  <form class="form">
+    <p-multiSelect  optionLabel="Category" name="category"></p-multiSelect>
+    <p-inputSwitch [(ngModel)]="checked" name="checked"></p-inputSwitch>
+  </form>
+  <div class="transaction-header">
+    Transactions
+  </div>
+  <div class="transactions-wrapper">
+    <div class="transactions">
+      <app-transaction></app-transaction>
+      <app-transaction></app-transaction>
+      <app-transaction></app-transaction>
+      <app-transaction></app-transaction>
+      <app-transaction></app-transaction>
+      <app-transaction></app-transaction>
+    </div>
+  </div>
+</div>

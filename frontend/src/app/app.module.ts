@@ -17,6 +17,11 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {InputTextModule} from "primeng/inputtext";
 import { RegisterComponent } from './register/register.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import {InputSwitchModule} from "primeng/inputswitch";
+import {FormsModule} from "@angular/forms";
+import {MultiSelectModule} from "primeng/multiselect";
+import {CdkScrollableModule} from "@angular/cdk/scrolling";
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { RegisterComponent } from './register/register.component';
     TransactionComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,11 @@ import { RegisterComponent } from './register/register.component';
     RippleModule,
     AvatarModule,
     BadgeModule,
-    InputTextModule
+    InputTextModule,
+    InputSwitchModule,
+    FormsModule,
+    MultiSelectModule,
+    CdkScrollableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
