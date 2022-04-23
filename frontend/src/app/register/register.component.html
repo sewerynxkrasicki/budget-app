@@ -8,24 +8,47 @@
     Create your new<br>
     account now.
   </div>
-  <form class="form">
+  <form class="form" [formGroup]="registerForm" (submit)="register()">
     <span class="p-float-label">
-      <input type="text" id="email" pInputText/>
+      <input type="text" id="email" pInputText formControlName="email"/>
       <label for="email">Email</label>
     </span>
+    <div class="error-container">
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['email'].hasError('email')">Wrong email format.</small>
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['email'].hasError('required')">Email is required.</small>
+    </div>
     <span class="p-float-label">
-      <input type="text" id="username" pInputText/>
+      <input type="text" id="username" pInputText formControlName="username"/>
       <label for="username">Username</label>
     </span>
+    <div class="error-container">
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['username'].hasError('required')">Username is required.</small>
+    </div>
     <span class="p-float-label">
-      <input type="password" id="password" pInputText/>
+      <input type="password" id="password" pInputText formControlName="password"/>
       <label for="password">Password</label>
     </span>
+    <div class="error-container">
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['password'].hasError('required')">Password is required.</small>
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['password'].hasError('minlength')">Password is too short.</small>
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['password'].hasError('maxlength')">Password is too long.</small>
+    </div>
     <span class="p-float-label">
-      <input type="password" id="reapeat-password" pInputText/>
+      <input type="password" id="repeat-password" pInputText formControlName="repeatPassword"/>
       <label for="repeat-password">Repeat password</label>
     </span>
-    <button pButton type="button" label="Register" class="p-button-lg"></button>
+    <div class="error-container">
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['repeatPassword'].hasError('required')">Repeat password is required.</small>
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['repeatPassword'].hasError('minlength')">Password is too short.</small>
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['repeatPassword'].hasError('maxlength')">Password is too long.</small>
+      <small class="p-d-block ui-state-error" *ngIf="registerForm.touched && registerForm.controls['repeatPassword'].hasError('mustMatch')">Passwords doesn't match.</small>
+    </div>
+    <button
+      pButton
+      type="submit"
+      label="Register"
+      class="p-button-lg"
+    ></button>
   </form>
   <div class="footer">
     Already have an account?&nbsp;<a [routerLink]="['/login']">Sign in </a>

@@ -21,7 +21,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/register", async (req, res, next) => {
-    const {username, password, email} = req.body;
+    const {username, password, email} = req.body.user;
     const salt = await bcrypt.genSalt(10);
     const encodePassword = await bcrypt.hash(password, salt);
     await client.query(

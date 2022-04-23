@@ -25,6 +25,10 @@ export class AuthService {
     );
   }
 
+  registerUser(user: User) {
+    return this.http.post(`${environment.apiUrl}/api/auth/register`, {user});
+  }
+
   getUser(): User {
     return this.currentUser.getValue() as User;
   }

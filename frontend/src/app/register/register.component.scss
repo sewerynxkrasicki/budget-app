@@ -19,10 +19,13 @@
     padding-top: 30px;
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
 
     .p-float-label > label {
       color: black;
+    }
+
+    .error-container {
+      margin-bottom: 30px;
     }
   }
 
