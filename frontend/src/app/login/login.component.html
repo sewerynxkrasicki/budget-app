@@ -7,16 +7,31 @@
     please login<br>
     to your account.
   </div>
-  <form class="form">
+  <form class="form" [formGroup]="loginForm" (submit)="login()">
     <span class="p-float-label">
-      <input type="text" id="email" pInputText/>
+      <input type="text" id="email" pInputText formControlName="email"/>
       <label for="email">Email</label>
     </span>
+    <div class="error-container">
+      <small class="p-d-block ui-state-error" *ngIf="loginForm.touched && loginForm.controls['email'].hasError('email')">Wrong email format.</small>
+      <small class="p-d-block ui-state-error" *ngIf="loginForm.touched && loginForm.controls['email'].hasError('required')">Email is required.</small>
+    </div>
     <span class="p-float-label">
-      <input type="password" id="password" pInputText/>
+      <input type="password" id="password" pInputText formControlName="password"/>
       <label for="password">Password</label>
     </span>
-    <button pButton type="button" label="Submit" class="p-button-lg"></button>
+    <div class="error-container">
+      <small class="p-d-block ui-state-error" *ngIf="loginForm.touched && loginForm.controls['password'].hasError('required')">Password is required.</small>
+      <small class="p-d-block ui-state-error" *ngIf="loginForm.touched && loginForm.controls['password'].hasError('minlength')">Password is too short.</small>
+      <small class="p-d-block ui-state-error" *ngIf="loginForm.touched && loginForm.controls['password'].hasError('maxlength')">Password is too long.</small>
+    </div>
+    <button
+      pButton
+      type="submit"
+      label="Submit"
+      class="p-button-lg"
+      [disabled]="!loginForm.dirty && !loginForm.valid"
+    ></button>
   </form>
   <div class="footer">
     Don't have an account?&nbsp;<a [routerLink]="['/register']">Sign Up </a>

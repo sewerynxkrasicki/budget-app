@@ -19,9 +19,10 @@ import {InputTextModule} from "primeng/inputtext";
 import { RegisterComponent } from './register/register.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import {InputSwitchModule} from "primeng/inputswitch";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MultiSelectModule} from "primeng/multiselect";
 import {CdkScrollableModule} from "@angular/cdk/scrolling";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,10 @@ import {CdkScrollableModule} from "@angular/cdk/scrolling";
     InputSwitchModule,
     FormsModule,
     MultiSelectModule,
-    CdkScrollableModule
+    CdkScrollableModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
