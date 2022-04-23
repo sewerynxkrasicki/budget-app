@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {User} from "../models/user";
+import {MessageService} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -20,7 +22,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,8 +32,20 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (this.registerForm.dirty && this.registerForm.valid) {
-      this.authService.registerUser(new User(this.registerForm.value.email, this.registerForm.value.username, this.registerForm.value.email)).subscribe((res) => {
+      this.authService.registerUser(new User(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.username)).subscribe((res: any) => {
         console.log(res);
+        if (res?.nickname === false) {
+          this.messageService.add({key: 'registerStatus', severity:'error', summary: 'Error', detail: 'Username exists.'});
+          return;
+        }
+        if (res?.email === false) {
+          this.messageService.add({key: 'registerStatus', severity:'error', summary: 'Error', detail: 'Email exists.'});
+          return;
+        }
+        this.messageService.add({key: 'registerStatus', severity:'success', summary: 'Success', detail: 'Account created succesfully. You will be redirected to login page.'});
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 3000);
       });
     }
   }

@@ -23,6 +23,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MultiSelectModule} from "primeng/multiselect";
 import {CdkScrollableModule} from "@angular/cdk/scrolling";
 import {HttpClientModule} from "@angular/common/http";
+import {ToastModule} from "primeng/toast";
+import {MessageService} from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -52,9 +54,12 @@ import {HttpClientModule} from "@angular/common/http";
     CdkScrollableModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
