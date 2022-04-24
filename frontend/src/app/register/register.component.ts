@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {User} from "../models/user";
 import {MessageService} from "primeng/api";
 import {Router} from "@angular/router";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
-  registerForm = this.fb.group({
+export class RegisterComponent implements OnInit, OnDestroy {
+  public registerForm = this.fb.group({
     email: ['', [Validators.email, Validators.required]],
     username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(24)]],
@@ -19,6 +20,8 @@ export class RegisterComponent implements OnInit {
   }, {
     validators: this.passwordConfirmationValidator('password', 'repeatPassword')
   });
+
+  private destroy$ = new Subject();
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +35,10 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (this.registerForm.dirty && this.registerForm.valid) {
-      this.authService.registerUser(new User(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.username)).subscribe((res: any) => {
+      this.authService
+        .registerUser(new User(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.username))
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((res: any) => {
         if (res?.nickname === false) {
           this.messageService.add({key: 'registerStatus', severity:'error', summary: 'Error', detail: 'Username exists.'});
           return;
@@ -64,5 +70,9 @@ export class RegisterComponent implements OnInit {
         matchingControl.setErrors(null);
       }
     };
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
   }
 }
