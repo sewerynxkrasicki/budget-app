@@ -1,6 +1,9 @@
 <div class="container">
   <div class="add-new-transaction-btn">
-    <p-button icon="pi pi-plus"></p-button>
+    <p-button
+      icon="pi pi-plus"
+      (click)="openTransactionDialog()"
+    ></p-button>
   </div>
   <div class="transaction-header">
     Transactions
@@ -16,3 +19,49 @@
     </div>
   </div>
 </div>
+
+<p-dialog
+  [(visible)]="displayTransactionDialog"
+  [header]="'Add new transaction'"
+  [style]="{width: '100vw', height: '100vh'}"
+>
+  <div class="container">
+    <form class="form" (submit)="createTransaction()">
+    <span class="p-float-label">
+      <input type="text" id="title" pInputText [(ngModel)]="title" [ngModelOptions]="{standalone: true}"/>
+      <label for="title">Title</label>
+    </span>
+      <span class="p-float-label">
+        <p-inputNumber
+          [(ngModel)]="amount"
+          inputId="currency-us"
+          mode="currency"
+          currency="USD"
+          locale="en-US"
+          styleClass="inputNumber"
+          [ngModelOptions]="{standalone: true}"
+        ></p-inputNumber>
+        <label for="currency-us">Amount</label>
+      </span>
+      <span class="p-float-label">
+        <p-dropdown
+          inputId="dropdown"
+          [autoDisplayFirst]="false"
+          [options]="categories"
+          [style]="{width: '100%'}"
+          [(ngModel)]="category"
+          [ngModelOptions]="{standalone: true}"
+          optionLabel="name"
+        ></p-dropdown>
+        <label for="dropdown">Category</label>
+      </span>
+      <button
+        pButton
+        type="submit"
+        label="Create"
+        class="p-button-lg"
+        [disabled]="title.length === 0 && category === null"
+      ></button>
+    </form>
+  </div>
+</p-dialog>

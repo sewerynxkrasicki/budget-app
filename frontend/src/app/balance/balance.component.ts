@@ -31,5 +31,7 @@ export class BalanceComponent implements OnInit {
   }
 
 
-
+  transactionAdded() {
+    this.getBudget();
+  }
 }

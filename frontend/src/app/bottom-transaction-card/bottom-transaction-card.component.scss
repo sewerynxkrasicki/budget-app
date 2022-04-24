@@ -55,3 +55,33 @@
     }
   }
 }
+
+p-dialog {
+  .container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: white;
+
+    .form {
+      padding-top: 100px;
+      display: flex;
+      row-gap: 40px;
+      flex-direction: column;
+
+      input, p-inputnumber, .inputNumber, inputNumber p-inputnumber p-component {
+        width: 100% !important;
+      }
+
+      ::ng-deep {
+        p-inputnumber > span {
+          width: 100% !important;
+        }
+      }
+
+      .p-float-label > label {
+        color: black;
+      }
+    }
+  }
+}

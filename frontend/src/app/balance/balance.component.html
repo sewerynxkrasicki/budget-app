@@ -7,4 +7,4 @@
     {{ this.budget | currency }}
   </div>
 </div>
-<app-bottom-transaction-card></app-bottom-transaction-card>
+<app-bottom-transaction-card (addTransaction)="transactionAdded()"></app-bottom-transaction-card>

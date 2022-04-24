@@ -12,7 +12,12 @@ export class AuthService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    const user: string | null = localStorage.getItem('currentUser');
+    if (user && !this.getUser()) {
+      this.currentUser.next(JSON.parse(user));
+    }
+  }
 
   userLogin(email: string, password: string) {
     return this.http.post(`${environment.apiUrl}/api/auth/login`, {email, password}).pipe(

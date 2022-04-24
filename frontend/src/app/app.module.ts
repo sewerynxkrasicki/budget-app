@@ -22,9 +22,14 @@ import {InputSwitchModule} from "primeng/inputswitch";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MultiSelectModule} from "primeng/multiselect";
 import {CdkScrollableModule} from "@angular/cdk/scrolling";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
+import {DialogModule} from "primeng/dialog";
+import { APP_BASE_HREF } from '@angular/common';
+import {DropdownModule} from "primeng/dropdown";
+import {InputNumberModule} from "primeng/inputnumber";
+import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -56,9 +61,14 @@ import {MessageService} from "primeng/api";
     ReactiveFormsModule,
     FormsModule,
     ToastModule,
+    DialogModule,
+    DropdownModule,
+    InputNumberModule,
   ],
   providers: [
-    MessageService
+    MessageService,
+    {provide: APP_BASE_HREF, useValue: '/'},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
