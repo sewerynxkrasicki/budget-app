@@ -3,6 +3,7 @@ const cors = require("cors");
 const passport = require("./config/passportConfig");
 
 const authentication = require("./routes/authentication");
+const budget = require("./routes/budget");
 
 const app = express();
 app.use(express.json());
@@ -16,3 +17,4 @@ const serverListen = app.listen(process.env.EXPRESS_PORT, () => {
 
 passport.initialize();
 app.use("/api/auth", authentication);
+app.use("/api/budget", passport.authenticate("jwt", { session: false }), budget);

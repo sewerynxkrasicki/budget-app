@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.registerForm.dirty && this.registerForm.valid) {
       this.authService.registerUser(new User(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.username)).subscribe((res: any) => {
-        console.log(res);
         if (res?.nickname === false) {
           this.messageService.add({key: 'registerStatus', severity:'error', summary: 'Error', detail: 'Username exists.'});
           return;
