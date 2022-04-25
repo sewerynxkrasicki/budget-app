@@ -30,6 +30,6 @@ $ nodemon app.js
 ```
 
 ![image](https://user-images.githubusercontent.com/98671369/165147470-db310141-26b8-4845-b9be-1c4ee7d619a9.png)
-![image](https://user-images.githubusercontent.com/98671369/165147495-2fedfea2-ceda-494d-a1cf-944fbc1efa09.png)
+![image](https://user-images.githubusercontent.com/98671369/165148721-de524a7a-bce0-4365-b0d9-b6ff8945af58.png)
 ![image](https://user-images.githubusercontent.com/98671369/165147891-5aee32d4-e25d-4e5c-9e20-9d9e875b0703.png)
 ![image](https://user-images.githubusercontent.com/98671369/165147916-0911bea4-fc9f-4a04-b4ec-176392fd6aef.png)
